@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<appender name="STOUT" class="ch.qos.logback.core.ConsoleAppender">
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsolAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
 			<pattern>%d{HH:mm:ss.SSS}{%-5level} - %m%n</pattern>
 		</layout>
 	</appender>
-	<root level="ERROR">
+	<root level="DEBUG">
 		<appender-ref ref="STOUT"/>
 	</root>
 </configuration>
