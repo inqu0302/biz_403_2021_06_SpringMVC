@@ -61,7 +61,7 @@ public class BookDaoImplV1 implements BookDao{
 	}
 
 	@Override
-	public int deletd(String pk) {
+	public int delete(String pk) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

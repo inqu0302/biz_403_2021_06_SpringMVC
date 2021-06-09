@@ -7,6 +7,18 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
+<!-- properties 파일의 내용을 읽어서 변수를 사용하기 위한 bean 설정 -->
+
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="fileEncoding" value="UTF-8"/>
+	<property name="locations">
+		<list>
+			<value>/WEB-INF/spring/config/mysql.properties</value>
+			<value>/WEB-INF/spring/config/String.properties</value>
+		</list>
+	</property>
+</bean>
+
 <!-- 
 주석을 작성할때는 (<), (!) 기호 사용금지
 * - context.xml파일 : Project에서 선언한, 사용할 클래스를 객체로 미리 선언하기 위한 걸정을 하는 곳
@@ -25,10 +37,10 @@ Spring container는 여기에 설정된 항목을 보고 서버가 시작될때 
 <!-- DriverManagerDataSource = new DriverManagerDataSource -->
 <!--  jdbc를 통하여 DBMS에 연결하는 Connection 생성 -->
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-	<property name="url" value="jdbc:mysql://localhost:3306/bookrent"/>
-	<property name="username" value="gbUser"/>
-	<property name="password" value="12345"/>
+	<property name="driverClassName" value="${mysql.driver}"/>
+	<property name="url" value="${mysql.url}"/>
+	<property name="username" value="${mysql.username}"/>
+	<property name="password" value="${mysql.password}"/>
 </bean>
 <!-- 
 java Code를 사용하여 DBMS에 SQL을 보내고 결과를 수신하기 위한 Helper class

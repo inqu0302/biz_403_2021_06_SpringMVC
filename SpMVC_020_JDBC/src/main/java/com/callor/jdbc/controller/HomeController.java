@@ -2,6 +2,7 @@ package com.callor.jdbc.controller;
 
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class HomeController {
+	
+	@Value("${user.name}")
+	protected String user_name;
+	
+	@Value("${user.email}")
+	protected String user_email;
 	
 //	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -41,6 +48,9 @@ public class HomeController {
 //		String formattedDate = dateFormat.format(date);
 //		
 //		model.addAttribute("serverTime", formattedDate );
+		
+		log.debug("User Name : {} ",user_name);
+		log.debug("User Email : {} ",user_email);
 		
 		rentService.viewBookAndComp();
 		

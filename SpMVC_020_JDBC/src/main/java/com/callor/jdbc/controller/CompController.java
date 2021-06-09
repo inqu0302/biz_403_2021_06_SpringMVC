@@ -3,9 +3,11 @@ package com.callor.jdbc.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.callor.jdbc.model.CompVO;
 import com.callor.jdbc.pesistance.CompDao;
+import com.callor.jdbc.serivce.CompService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,9 +17,13 @@ import lombok.extern.slf4j.Slf4j;
 public class CompController {
 	
 	protected final CompDao compDao;
-	public CompController(CompDao compDao) {
+	protected final CompService comService;
+	
+	public CompController(CompDao compDao, CompService comService) {
 		
 		this.compDao = compDao;
+		
+		this.comService = comService;
 	}
 
 	// localhost:8080/jdbc/comp/insert로 호출되는 함수
@@ -33,7 +39,7 @@ public class CompController {
 	public String insert(CompVO cmVO) {
 		
 		log.debug("Company VO {}", cmVO.toString());
-		compDao.insert(cmVO);
+		comService.insert(cmVO);
 		
 		return "redirect:/";
 	}
@@ -42,6 +48,13 @@ public class CompController {
 	public String update() {
 		
 		return "comp/input";
+	}
+	
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String delete(@RequestParam("cp_code") String cpCode) {
+		
+		compDao.delete(cpCode);
+		return "redirect:/";
 	}
 	
 }

@@ -31,5 +31,5 @@ public interface GenericDao<VO, PK> {
 	public VO findByID(PK pk);
 	public int insert(VO vo);
 	public int update(VO vo);
-	public int deletd(PK pk);
+	public int delete(PK pk);
 }

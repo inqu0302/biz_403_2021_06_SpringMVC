@@ -54,7 +54,7 @@ public class AuthorDaoImplV1 implements AuthorDao {
 	}
 
 	@Override
-	public int deletd(String pk) {
+	public int delete(String pk) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
