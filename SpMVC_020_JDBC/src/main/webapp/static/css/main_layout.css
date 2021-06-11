@@ -19,7 +19,7 @@ table th, td{
 }
 
 table td{
-	margin-left : 20px;
+	text-align: center;
 }
 
 table tr:last-child td{
@@ -55,4 +55,24 @@ button{
 button:hover{
 	box-shadow:2px 2px 2px rgba(0, 0, 0, 0.7);
 	cursor: pointer;
+}
+
+button.btn_save{
+	background-color: green;
+	color: white;
+}
+
+button.btn_reset{
+	background-color: blue;
+	color: white;
+}
+
+button.btn_list{
+	background-color: orange;
+	color: white;
+}
+
+button.btn_delete{
+	background-color: red;
+	color: white;
 }

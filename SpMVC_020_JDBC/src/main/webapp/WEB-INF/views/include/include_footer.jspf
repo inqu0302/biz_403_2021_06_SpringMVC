@@ -4,7 +4,7 @@
 <c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 <style>
 	footer{
-		background-color: black;
+		background-color: #4682B4;
 		color: white;
 		padding: 5px;
 	}

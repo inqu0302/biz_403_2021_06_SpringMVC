@@ -41,8 +41,18 @@
 		transition: 0.5s; /* 효과에 딜레이를 줌 */
 	}
 	
-	nva#main_nav li:first-child{
+	nav#main_nav li:first-child{
 		margin-left: 15px;
+	}
+	
+	/* flex item의 특정한 요소의 margin-left 값을 auto로 지정하면 해당 요소부터
+	오른쪽으로 밀리는 layout을 만들수 있다. */
+	nav#main_nav li:nth-of-type(5){
+		margin-left: auto;
+	}
+	
+	nav#main_nav li:last-child{
+		margin-right: 15px;
 	}
 	
 	nav#main_nav li:Hover{
