@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 section#main_sec {
+	flex: auto;
 	width: 100%;
 	margin: 5px auto;
 	border: 1px solid #999;
@@ -35,6 +36,15 @@ section#ad_sec article {
 	margin: 5px 3px;
 	height: 200px;
 	border-radius: 5px;
+	/*
+	article box 에 지정된 background를 box 에 가득차도록 하고, 이미지는 box크기만큼
+	가로세로를 조절하여 채워라
+	현재 article에  background를 채우면서 nth-of-type(*) 가상 클래스를 사용했더니
+	background-size가 작동되지 않는다
+	
+	해결방법 : include_header.jspf 참조
+	*/
+	background-size : 100% 100%;
 }
 /*
 		어떤 요소의 순서대로 속성을 지정할때 nth-child(순서), nth-of-type(순서)

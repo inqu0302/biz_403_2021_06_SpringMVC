@@ -36,25 +36,56 @@ public class HomeController {
 	public HomeController(RentService rentService) {
 		// TODO Auto-generated constructor stub
 		this.rentService = rentService;
+		/*
+		 * HttpSession 객체는 한번 생성되면 유효기간 동안 서버의 메모리에 상주한다.
+		 * Session은 꼭 필요한 경우에만 생성하는 것이 좋다.
+		 */
 	}
 	
+	/*
+	 * 사용자에게 Response를 할때 forward 방법과 redirect 방법이 있다
+	 * 
+	 * forwarding은 service 등 에서 생성한(조회한) 데이터를 
+	 * *.jps 파일과 Rendering 하여 사용자에게 HTML 코드로 전송한다
+	 * 
+	 * service 등에서 생성한 데이터는 
+	 * Model 객체에 addAttribute() method를 사용하여 객체를 만들고
+	 * 
+	 * 
+	 * class Spring ___ {
+	 * 		main(){
+	 * 			HomeController hController = new HomController();
+	 * 			Locale locale = new Locale();
+	 * 			Model model = new Model();
+	 * 			hController.home(locale, model)
+	 * 			String url = hController.hom(locale, model)
+	 * 
+	 * 			if( !url.contains("redirect") ){
+	 * 				rendering(url, model);
+	 * 			}
+	 * 		}
+	 * }
+	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		model.addAttribute("serverTime", formattedDate );
-		
 		log.debug("User Name : {} ",user_name);
 		log.debug("User Email : {} ",user_email);
+		
+		/*
+		 * 매개변수로 전달받은 Model class type 변수인 model에 속성을 하나 추가한다.
+		 * 속성의 이름은 user이며, 값은 user_name에 담긴 값이다.
+		 * 
+		 * 
+		 */
+		
+		// user라는 이름으로 user_name에 담긴 변수를 셋팅하여 home으로 전송
+		model.addAttribute("user", user_name);
 		
 		rentService.viewBookAndComp();
 		
 		return "home";
 	}
+	
+	
 	
 }

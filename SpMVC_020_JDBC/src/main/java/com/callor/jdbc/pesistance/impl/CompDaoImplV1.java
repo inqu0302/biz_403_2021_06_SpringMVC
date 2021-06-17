@@ -58,7 +58,7 @@ public class CompDaoImplV1 implements CompDao {
 		
 		Object[] params = new Object[] {pk};
 		
-		CompVO vo = (CompVO)JdbcTemplate.query(sql, new BeanPropertyRowMapper<CompVO>(CompVO.class));
+		CompVO vo = (CompVO)JdbcTemplate.query(sql, params, new BeanPropertyRowMapper<CompVO>(CompVO.class));
 		return vo;
 	}
 

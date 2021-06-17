@@ -3,17 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}"/>
 <style>
-	* {
-		box-sizing: border-box;
-		margin: 0;
-		padding: 0;
-	}
-	header{
-		background-color: #DDA0DD;
-		color: white;
-		text-shadow : 1px 1px 1px black;
-		text-align: center;
-		padding: 2rem;
+	
+	h1.page_title{
+	width: 90%;
+	margin:10px auto;
 	}
 	
 	nav#main_nav{
@@ -66,26 +59,32 @@
 	*/	
 	section#ad_sec article:nth-of-type(1) {
 	background: url("${rootPath}/static/images/ad_01.jpg") no-repeat;
+	/*
+	가상 클래스에 back ground 이미지를 설정한 후 size 를 적용하는 첫번째 방법
+	*/
 	background-size: 100% 100%;
 	}
 	
 	section#ad_sec article:nth-of-type(2) {
 		background: url("${rootPath}/static/images/ad_02.jpg") no-repeat;
-		background-size: 100% 100%;
 	}
 	
 	section#ad_sec article:nth-of-type(3) {
 		background: url("${rootPath}/static/images/ad_03.jpg") no-repeat;
-		background-size: 100% 100%;
 	}
 	
 	section#ad_sec article:nth-of-type(4) {
 		background: url("${rootPath}/static/images/ad_04.jpg") no-repeat;
-		background-size: 100% 100%;
 	}
 	
 	section#ad_sec article:nth-of-type(5) {
 		background: url("${rootPath}/static/images/ad_05.jpg") no-repeat;
+	}
+	
+	/* 가상클래스를 사용할때 위치값 [nth-of-type(위치)] 을 지정하여 style 을 지정하는데
+	전역 시스템 변수인 n 이 존재를 한다 n 은 style의 가상클래스에서 사용하는 변수로 
+	모든것이라는 의미이다 */
+	section#ad_sec artcle:nth-of-type(n) {
 		background-size: 100% 100%;
 	}
 </style>
@@ -105,7 +104,20 @@
 			<li>도서정보</li>
 			<li>출판사정보</li>
 			<li>저자정보</li>
+			<%-- 
+			USERVO 속성에는 로그인(정상인증된)한 사용자의 정보가 담겨 있게 된다.
+			이 정보는 현재 서비스를 계속 사용하는 동안에는 언제든지 어디서(어떤 jsp에서든지)
+			값을 사용(조회, 읽기) 할수 있다.
+			 --%>
+			<c:if test="${empty USERVO}">
 			<li>로그인</li>
 			<li>회원가입</li>
+			</c:if>
+			
+			<c:if test="${not empty USERVO}">
+			<li >로그아웃</li>
+			<li id="mypage">${USERVO.username} 님 반갑습니다.</li>
+			</c:if>
+			
 		</ul>
 	</nav>

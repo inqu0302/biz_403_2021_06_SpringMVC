@@ -7,26 +7,26 @@
 <%@ include file="/WEB-INF/views/include/include_head.jspf" %>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf" %>
-	<h1 class="page_title">출판사 정보</h1>
-	<table>
-		<tr>
-			<th>CODE</th>
-			<th>출판사명</th>
-			<th>대표</th>
-			<th>연락처</th>
-			<th>주소</th>
-			<th>주요장르</th>
-		</tr>
-		<tr>
-			<td>CODE</td>
-			<td>출판사명</td>
-			<td>대표</td>
-			<td>연락처</td>
-			<td>주소</td>
-			<td>주요장르</td>
-		</tr>
-	</table>
-	
+	<section class=main_sec>
+		<table>
+			<tr>
+				<th>CODE</th>
+				<th>출판사명</th>
+				<th>대표</th>
+				<th>연락처</th>
+				<th>주소</th>
+				<th>주요장르</th>
+			</tr>
+			<tr>
+				<td>CODE</td>
+				<td>출판사명</td>
+				<td>대표</td>
+				<td>연락처</td>
+				<td>주소</td>
+				<td>주요장르</td>
+			</tr>
+		</table>
+	</section>
 	<div class="btn_box">
 		<button class="btn_insert comp">출판사등록</button>
 	</div>
