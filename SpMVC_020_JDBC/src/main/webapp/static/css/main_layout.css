@@ -51,7 +51,19 @@ table th, td{
 }
 
 table td{
-	text-align: center;
+	text-align: left;
+	margin-left: 30px;
+	padding-left: 10px;
+	
+	max-width: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+/* td 에 마우스 hover가 되면 ellipsis를 해제하여 text 를 그대로 보여주기 */
+table td:hover{
+	overflow: visible;
+	text-overflow: inherit;
 }
 
 table tr:last-child td{
@@ -59,7 +71,7 @@ table tr:last-child td{
 }
 
 table tr:nth-child(odd){
-	background-color: #9370DB;
+	background-color: #FFA07A;
 }
 
 table tr:nth-child(even){
@@ -107,4 +119,34 @@ button.btn_list{
 button.btn_delete{
 	background-color: red;
 	color: white;
+}
+
+
+div#modal {
+	position: fixed;
+	top:0;
+	left:0;
+	bottom:0;
+	right:0;
+	background-color: black;
+	opacity: 0.5;
+	z-index: 100;
+	display: none;
+}
+div#modal span {
+	position: absolute;
+	display: inline-block;
+	top:30px;
+	right: 30px;
+	font-size: 30px;
+	color:white;
+	font-weight: 900;
+	border-radius: 50%;
+	padding:10px 20px;
+	transition:0.6s
+}
+
+div#modal span:hover {
+	background-color: white;
+	cursor: pointer;
 }

@@ -14,6 +14,15 @@
 		background-color:#D8BFD8;
 		text-align: center;
 		border-radius: 30px;
+		z-index:500;
+		
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform: translate(-50%, -50%);
+		
+		animation-name : aniTopDown;
+		animation-duration:0.8s;
 	}
 	
 	form#login_form h2{
@@ -74,6 +83,22 @@
 		background-color:red;
 		color:yellow;
 		font-size:20px;		
+	}
+	
+	@keyframes aniTopDown{
+		from {
+			top: -300px;
+			opacity: 0;
+		}
+		
+		to {
+			top: 50%;
+			opacity : 1;
+		}
+	}
+	
+	div#modal {
+		display: block;
 	}
 </style>
 <body>

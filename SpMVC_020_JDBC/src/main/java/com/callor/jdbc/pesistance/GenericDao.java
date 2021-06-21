@@ -27,7 +27,7 @@ import com.callor.jdbc.model.BookVO;
  */
 public interface GenericDao<VO, PK> {
 
-	public List<VO> selecAll();
+	public List<VO> selectAll();
 	public VO findByID(PK pk);
 	public int insert(VO vo);
 	public int update(VO vo);

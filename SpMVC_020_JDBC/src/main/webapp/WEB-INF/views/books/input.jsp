@@ -8,11 +8,21 @@
 <meta charset="UTF-8">
 <title>도서정보 2021</title>
 </head>
+<style>
+form#book_input input.search{
+	width:30%;
+}
+
+</style>
+<script>
+	var rootPath = "${rootPath}"
+</script>
+<script src="${rootPath}/static/js/book_input.js?ver=2021-06-21-008"></script>
 <body>
 	<%@ include file="/WEB-INF/views/include/include_head.jspf" %>
 	<%@ include file="/WEB-INF/views/include/include_header.jspf" %>
 	<section class=main_sec>
-		<form method="post">
+		<form id="book_input" method="post">
 			<fieldset>
 			<legend>도서정보 등록</legend>
 			<div>
@@ -25,11 +35,13 @@
 			</div>
 			<div>
 				<label>출판사</label>
-				<input name="bk_ccode" id="bk_ccode"placeholder="">
+				<input class="search" name="bk_ccode" id="bk_ccode"placeholder="">
+				<span>출판사명</span>
 			</div>
 			<div>
 				<label>저자</label>
-				<input name="bk_acode" id="bk_acode"placeholder="">
+				<input class="search" name="bk_acode" id="bk_acode"placeholder="">
+				<span>저자명</span>
 			</div>
 			<div>
 				<label>출판년도</label>
@@ -52,22 +64,6 @@
 		</form>
 	</section>
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf" %>
-	<script>
-		// const : 상수를 선언하는 키워드, 코드가 진행되는 동안 값이 변경되면 않되는 것
-		const doc = document
-		doc.querySelector("button.btn_delete").addEventListener("click", (e)=>{
-			
-			doc.querySelector("input[name='cpcode']")
-			
-			let cpcodeObj = doc.querySelector("input#cpcode")
-			
-			let cpcode = cpcodeObj.value
-			
-			alert("삭제버튼 클릭" + cpcode)
-			if(confirm(cpcode + " 를 삭제합니다!")){
-				location.replace("${rootPath}/comp/delete?cp_code=" + cpcode);
-			}
-		})
-	</script>
+	
 </body>
 </html>

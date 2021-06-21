@@ -22,7 +22,12 @@ section#main_sec article ul {
 
 section#main_sec article li {
 	margin: 0 20px;
-	padding: 0 0px
+	padding: 0 0px;
+	
+	max-width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 section#ad_sec {

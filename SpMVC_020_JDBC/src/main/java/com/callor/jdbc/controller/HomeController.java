@@ -8,8 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.callor.jdbc.pesistance.BookDao;
-import com.callor.jdbc.pesistance.CompDao;
+import com.callor.jdbc.serivce.HomeService;
 import com.callor.jdbc.serivce.RentService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class HomeController {
+	
 	
 	@Value("${user.name}")
 	protected String user_name;
@@ -30,12 +30,18 @@ public class HomeController {
 	// @Autowired
 	// private BookDao BookDao
 	// 이 코드에서 메모리 leak(누수)현상이 보고되어 아래코드를 권장한다
-//	protected final BookDao bookDao;
+
+	//	protected final BookDao bookDao;
+
+	protected final HomeService homeService;
+	
 	protected final RentService rentService;
 	
-	public HomeController(RentService rentService) {
+	public HomeController(RentService rentService, HomeService homeService) {
 		// TODO Auto-generated constructor stub
 		this.rentService = rentService;
+		
+		this.homeService = homeService;
 		/*
 		 * HttpSession 객체는 한번 생성되면 유효기간 동안 서버의 메모리에 상주한다.
 		 * Session은 꼭 필요한 경우에만 생성하는 것이 좋다.
@@ -68,6 +74,9 @@ public class HomeController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
+		
+		homeService.dashBoard(model);
+		
 		log.debug("User Name : {} ",user_name);
 		log.debug("User Email : {} ",user_email);
 		

@@ -8,7 +8,7 @@ public interface CompDao extends GenericDao<CompVO, String>{
 	
 	public String findByMaxCode();
 	
-	public List<CompVO> findByCName(String name);
+	public List<CompVO> findByCName(String cname);
 	
 	public List<CompVO> findByTel(String tel);
 	

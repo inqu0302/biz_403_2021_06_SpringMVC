@@ -22,8 +22,8 @@ public class RentServiceImplV1 implements RentService{
 	@Override
 	public void viewBookAndComp() {
 		
-		bookDao.selecAll();
-		compDao.selecAll();
+		bookDao.selectAll();
+		compDao.selectAll();
 	}
 
 }

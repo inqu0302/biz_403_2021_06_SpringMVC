@@ -17,13 +17,22 @@
 				<th>주소</th>
 				<th>주요장르</th>
 			</tr>
-			<tr>
-				<td>CODE</td>
-				<td>저자명</td>
-				<td>전화번호</td>
-				<td>주소</td>
-				<td>주요장르</td>
-			</tr>
+			<c:choose>
+				<c:when test="${empty AUTHOR}">
+					<tr><td colspan="5">데이터가 없습니다</td></tr>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${AUTHOR}" var="AUTHOR">
+						<tr>
+							<td>${AUTHOR.au_code}</td>
+							<td>${AUTHOR.au_name}</td>
+							<td>${AUTHOR.au_tel}</td>
+							<td>${AUTHOR.au_addr}</td>
+							<td>${AUTHOR.au_genre}</td>
+						</tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 		</table>
 	</section>
 	<div class="btn_box">

@@ -25,7 +25,7 @@ public class UserDaoImplV1 implements UserDao{
 		this.JdbcTemplate = JdbcTemplate;
 	}
 	@Override
-	public List<UserVO> selecAll() {
+	public List<UserVO> selectAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

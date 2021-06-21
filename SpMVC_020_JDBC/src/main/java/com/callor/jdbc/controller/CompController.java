@@ -1,5 +1,7 @@
 package com.callor.jdbc.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -20,13 +22,13 @@ import lombok.extern.slf4j.Slf4j;
 public class CompController {
 	
 	protected final CompDao compDao;
-	protected final CompService comService;
+	protected final CompService compService;
 	
-	public CompController(CompDao compDao, CompService comService) {
+	public CompController(CompDao compDao, CompService compService) {
 		
 		this.compDao = compDao;
 		
-		this.comService = comService;
+		this.compService = compService;
 	}
 	
 	@RequestMapping(value={"/",""}, method=RequestMethod.GET)
@@ -38,8 +40,20 @@ public class CompController {
 			return "redirect:/member/login";
 		}
 		
+		List<CompVO> compList = compService.selectAll();
+		log.debug("출판사 정보 가져오기 : {} " , compList.toString());
+		model.addAttribute("COMPS", compList);
+		
 		return "comp/list";
 		
+	}
+	
+	@RequestMapping(value="/list", method=RequestMethod.GET)
+	public String getList(Model model) {
+		List<CompVO> compList = compService.selectAll();
+		model.addAttribute("COMPS", compList);
+		
+		return "comp/list";
 	}
 
 	// localhost:8080/jdbc/comp/insert로 호출되는 함수
@@ -55,7 +69,7 @@ public class CompController {
 	public String insert(CompVO cmVO) {
 		
 		log.debug("Company VO {}", cmVO.toString());
-		comService.insert(cmVO);
+		compService.insert(cmVO);
 		
 		return "redirect:/";
 	}

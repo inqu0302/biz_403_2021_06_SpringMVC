@@ -13,31 +13,61 @@
 		<article>
 		<h3>출판사</h3>
 			<ul>
-				<li>출판사정보</li>
-				<li>출판사정보</li>
-				<li>출판사정보</li>
-				<li>출판사정보</li>
-				<li>출판사정보</li>
+				<c:choose>
+					<c:when test="${not empty COMPS}">
+						<c:forEach var="index" begin="0" end="4">
+							<li>
+								${COMPS[index].cp_title},&nbsp;&nbsp;
+								${COMPS[index].cp_ceo},&nbsp;&nbsp;
+								${COMPS[index].cp_tel}
+							</li>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<li>출판사정보</li>
+						<li>출판사정보</li>
+						<li>출판사정보</li>
+						<li>출판사정보</li>
+						<li>출판사정보</li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</article>
 		<article>
 		<h3>도서정보</h3>
 			<ul>
-				<li>도서정보</li>
-				<li>도서정보</li>
-				<li>도서정보</li>
-				<li>도서정보</li>
-				<li>도서정보</li>
+				<c:choose>
+					<c:when test="${not empty BOOKS}">
+						<c:forEach var="index" begin="0" end="4">
+							<li>
+								${BOOKS[index].bk_title},&nbsp;&nbsp;
+								${BOOKS[index].bk_ccode},&nbsp;&nbsp;
+								${BOOKS[index].bk_acode}
+							</li>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<li>도서정보 없음</li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</article>
 		<article>
 		<h3>저자정보</h3>
 			<ul>
-				<li>저자정보</li>
-				<li>저자정보</li>
-				<li>저자정보</li>
-				<li>저자정보</li>
-				<li>저자정보</li>
+				<c:choose>
+					<c:when test="${not empty AUTHORS}">
+						<c:forEach var="index" begin="0" end="4">
+							<li>
+								${AUTHORS[index].au_name},&nbsp;&nbsp;
+								${AUTHORS[index].au_tel}
+							</li>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<li>저자정보 없음</li>
+					</c:otherwise>
+				</c:choose>
 			</ul>
 		</article>	
 	</section>
@@ -49,5 +79,6 @@
 		<article></article>
 	</section>
 	<%@ include file="/WEB-INF/views/include/include_footer.jspf" %>
+	
 </body>
 </html>

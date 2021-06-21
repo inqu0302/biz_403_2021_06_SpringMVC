@@ -27,7 +27,7 @@ public class BookDaoImplV1 implements BookDao{
 	}
 	
 	@Override
-	public List<BookVO> selecAll() {
+	public List<BookVO> selectAll() {
 		// TODO Auto-generated method stub
 		
 		String sql = " SELECT * FROM tbl_books ";
@@ -39,7 +39,7 @@ public class BookDaoImplV1 implements BookDao{
 		
 		log.debug("SELECT All books {}", books.toString());
 		
-		return null;
+		return books;
 	}
 
 	@Override
