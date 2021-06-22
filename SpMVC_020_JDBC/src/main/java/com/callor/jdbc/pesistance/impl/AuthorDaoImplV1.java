@@ -103,7 +103,7 @@ public class AuthorDaoImplV1 implements AuthorDao {
 	public List<AuthorVO> findByTel(String tel) {
 		
 		String sql = " SELECT * FROM tbl_author ";
-		sql += " WHERE au_tel = ? ";
+		sql += " WHERE au_tel LIKE CONCAT ('%', ? '%') ";
 		
 		List<AuthorVO> author = JdbcTemplate.query(sql, new Object[] {tel}, new BeanPropertyRowMapper<AuthorVO>(AuthorVO.class));
 		

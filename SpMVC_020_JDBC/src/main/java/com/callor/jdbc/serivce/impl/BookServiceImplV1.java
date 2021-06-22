@@ -35,4 +35,11 @@ public class BookServiceImplV1 implements BookService{
 		return bookDao.selectAll();
 	}
 
+	@Override
+	public Integer insert(BookVO bookVO) {
+		//TODO 도서정보 입력하기
+		
+		return bookDao.insert(bookVO);
+	}
+
 }
