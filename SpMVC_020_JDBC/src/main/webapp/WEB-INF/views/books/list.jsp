@@ -29,8 +29,8 @@
 							<td>${ST.index}</td>
 							<td>${ST.bk_ISBN}</td>
 							<td>${ST.bk_title}</td>
-							<td>${ST.bk_ccode}</td>
-							<td>${ST.bk_acode}</td>
+							<td><span><label class="truncate">${ST.bk_ccode}</label></span></td>
+							<td><span><label class="truncate">${ST.bk_acode}</label></span></td>
 							<td>${ST.bk_date}</td>
 							<td>${ST.bk_price}</td>
 							<td>${ST.bk_pages}</td>
