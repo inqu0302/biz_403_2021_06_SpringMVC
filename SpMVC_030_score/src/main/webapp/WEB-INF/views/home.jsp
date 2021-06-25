@@ -120,12 +120,60 @@ button:hover{
 	cursor: pointer;
 }
 
+button.insert{
+	background-color: blue;
+	color: white;
+}
+	
+button.home{
+	background-color: green;
+	color:white;
+}
+
+button.save{
+	background-color: blue;
+	color: white;
+}
+
+button.reset{
+	background-color: oilive;
+	color: white;
+}
+
+button.list{
+	background-color: green;
+	color: white;
+}
+
+button.home{
+	background-color: yellow;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+}
+
+button.update{
+	background-color: green;
+	color: white;
+}
+
+button.delete{
+	background-color: red;
+	color: white;
+}
+
+button.student.list{
+	background-color: orange;
+	color: white;
+	text-shadow: 1px 1px 1px black;
+}
+
 form {
 	width: 90%;
 	margin:0 auto 10px auto;
 }
 
-fielset{
+fieldset{
+	margin-top : 20px;
 	background-color: #eee;
 	border: 1px solid green;
 	border-radius: 10px;
@@ -151,24 +199,10 @@ form input{
 	border-radius: 50px;
 }
 
-form inpu:hover{
+form input:hover{
 	background-color: #999;
 }
 
-form button.save{
-	background-color: blue;
-	color: white;
-}
-
-form button.reset{
-	background-color: oilive;
-	color: white;
-}
-
-form button.list{
-	background-color: green;
-	color: white;
-}
 </style>
 </head>
 <body>
@@ -186,6 +220,9 @@ form button.list{
 			</c:when>
 			<c:when test="${BODY == 'STUDENT_INPUT'}">
 				<%@include file="/WEB-INF/views/student/input.jsp"%>
+			</c:when>
+			<c:when test="${BODY == 'STUDENT_DETAIL'}">
+				<%@include file="/WEB-INF/views/student/detail.jsp"%>
 			</c:when>
 			<c:otherwise>
 				<%@include file="/WEB-INF/views/main.jsp" %>
@@ -225,6 +262,23 @@ form button.list{
 		})
 	}
 	
+	let table = document.querySelector("table.detail")
+	if(table){
+		table.addEventListener("click", (e)=>{
+			let target = e.target
+			let tagName = target.tagName
+			
+			if(tagName === "TD"){
+				let tr = target.closest("TR")
+				let stNum = tr.dataset.stnum
+				
+				location.href = "${rootPath}/student/detail?st_num=" + stNum
+				
+				}
+			})
+		}
+	
+		
 	
 </script>
 </html>
