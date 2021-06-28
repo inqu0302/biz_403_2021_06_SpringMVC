@@ -36,40 +36,41 @@ header{
 	padding: 2rem;
 }
 
-nav{
+nav {
 	background-color: black;
 	color: white;
 	width: 100wv;
+	transision:1s;
 }
 
-nav.fixed{
+nav.fixed {
 	position: fixed;
-	top:0;
-	left:0;
+	top: 0;
+	left: 0;
 	right: 10px;
 	border-bottom-right-radius: 20px;
-	box-shaow: 3px 3px 3px rgba(0,0,0,0.5);
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
-nav ul{
+nav ul {
 	list-style: none;
 	display: flex;
 	margin: 0 20px;
 }
 
-nav li{
+nav li {
 	padding: 16px 12px;
 	border-bottom: 3px solid transparent;
-	transition: 0.7s;
-}
-
-nav li:hover{
-	border-bottom: 3px solid yellow;
+	transition: 0.5s;
 	cursor: pointer;
 }
 
-nav li:nth-of-type(2){
-	margin-left: 10px auto;
+nav li:hover {
+	border-bottom: 3px solid yellow;
+}
+
+nav li:nth-of-type(2) {
+	margin-left: auto;
 }
 
 section#main_sec{
@@ -330,8 +331,9 @@ form input:hover{
 	
 	let main_nav = document.querySelector("nav#main_nav")
 	let main_header = document.querySelector("header")
+	
 	// header box의 높이가 얼마인지
-	let main_header_height = main_header.offsetHeigth;
+	let main_header_height = main_header.offsetHeight;
 	
 	document.addEventListener("scroll",()=>{
 		
@@ -350,10 +352,10 @@ form input:hover{
 		*/
 		// console.log(doc_top, main_header_height)
 		
-		if(doc_top < main_header_height * -1){
-			main_nav.classList.add("fixed");
-		}else{
-			main_nav.classList.remove("fixed");
+		if(doc_top < main_header_height * -1) {
+		main_nav.classList.add("fixed")
+		} else {
+		main_nav.classList.remove("fixed")
 		}
 	})
 	
