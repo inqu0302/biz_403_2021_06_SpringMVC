@@ -9,7 +9,6 @@
 	
 		SELECT * FROM tbl_student 
 		ORDER BY st_num DESC
-		LIMIT 10
 		
 	</select>
 	
