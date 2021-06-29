@@ -31,7 +31,7 @@ public class NaverServiceImplV1 implements NaverService<BookDTO> {
 	 * BookURL + "?query=" + 검색문자열
 	 */
 
-
+	@Override
 	public String queryURL(String search) {
 		
 		// 검색하고자 하는 문자열을 UTF-8로 인코딩
