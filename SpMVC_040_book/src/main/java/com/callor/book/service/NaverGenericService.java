@@ -22,10 +22,10 @@ import org.json.simple.parser.ParseException;
  * 
  * 그래서 인터페이스에 Generic을 선언하여 VO별로 필요에 따라 클래스를 만들수 있도록 한다
  */
-public interface NaverService <T>{
+public interface NaverGenericService <T>{
 	
 	// 검색문자열을 받아서 검색을 위한 URL을 생성하여 return
-	public String queryURL(String search_text);
+	public String queryURL(String search);
 	
 	// queryURL을 Naver에 보내고 Naver에서 응답받은 데이터를 JSON형태의 문자열로 변환
 	public String getJsonString(String queryURL) throws MalformedURLException, IOException;
