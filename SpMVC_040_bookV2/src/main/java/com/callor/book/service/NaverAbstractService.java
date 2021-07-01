@@ -3,6 +3,7 @@ package com.callor.book.service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
@@ -35,8 +36,9 @@ import com.callor.book.config.NaverSecret;
  */
 public abstract class NaverAbstractService<T> {
 
-	public abstract String queryURL(String search);
-	public String jsonString(String queryURL) throws IOException {
+	public abstract String queryURL(String search) throws UnsupportedEncodingException;
+	
+	public String getJsonString(String queryURL) throws IOException {
 		
 		URL url = new URL(queryURL);
 

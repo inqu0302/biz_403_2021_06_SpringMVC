@@ -66,7 +66,7 @@ public class HomeController {
 		if(search != null && !search.equals("")) {
 			
 			String queryURL = nBookService.queryURL(search.trim());
-			String jsonString = nBookService.jsonString(queryURL);
+			String jsonString = nBookService.getJsonString(queryURL);
 			List<BookDTO> bookList = nBookService.getNaverList(jsonString);
 			model.addAttribute("BOOKS",bookList);
 		}

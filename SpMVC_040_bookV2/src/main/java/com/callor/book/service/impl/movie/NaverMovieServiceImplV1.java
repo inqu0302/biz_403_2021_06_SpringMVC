@@ -23,33 +23,18 @@ import lombok.extern.slf4j.Slf4j;
 public class NaverMovieServiceImplV1 extends NaverAbstractService<MovieDTO>{
 
 	@Override
-	public String queryURL(String search) {
+	public String queryURL(String search) throws UnsupportedEncodingException {
 		// TODO 검색어 UTF-8 로 인코딩
 		
-		String searchUTF8 = null;
+		String searchUTF8 = URLEncoder.encode(search,"UTF-8");
+		String queryURL = NaverSecret.NURL.MOVIE;
+		queryURL += "?query%s&displqy=10";
+
+		queryURL = String.format(queryURL,searchUTF8);
 		
-		try {
-			searchUTF8 = URLEncoder.encode(search,"UTF-8");
-			
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		log.debug("queryURL {}", queryURL);
 		
-		StringBuilder queryURL = new StringBuilder();
-		queryURL.append(NaverSecret.NURL.MOVIE);
-		
-		// UTF-8 인코딩된 검색어
-		String queryString = String.format("?query=%s", searchUTF8);
-		queryURL.append(queryString);
-		
-		// 자료를 20개까지만 
-		queryString = String.format("&dispaly=%d", 20);
-		queryURL.append(queryString);
-		
-		log.debug("queryURL {}", queryURL.toString());
-		
-		return queryURL.toString();
+		return queryURL;
 	}
 
 	@Override
