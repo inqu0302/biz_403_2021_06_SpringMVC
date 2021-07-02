@@ -101,6 +101,22 @@ a {
 a:hover{
 	color: green;
 }
+
+table{
+	width: 95%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+th,td{
+	white-space: nowrap;
+	padding: 16px 12px;
+	border-top: 1px solid #ddd;
+}
+
+tr:last-child td{
+	border-bottom: 1px solid #ddd;
+}
 </style>
 <meta charset="UTF-8">
 <title>나의 홈페이지</title>
@@ -120,6 +136,7 @@ a:hover{
 			<option value="BOOK" <c:if test="${CAT == 'BOOK'}">selected = "selected"</c:if>>도서검색</option>
 			<option value="MOVIE" <c:if test="${CAT == 'MOVIE'}">selected = "selected"</c:if>>영화검색</option>
 			<option value="NEWS" <c:if test="${CAT == 'NEWS'}">selected = "selected"</c:if>>뉴스검색</option>
+			
 		</select>
 		<form>
 			<input name="search" placeholder="${pHolder}를 입력후 Enter">
@@ -130,6 +147,9 @@ a:hover{
 		<%@ include file="/WEB-INF/views/movie_list.jsp" %>
 		<%@ include file="/WEB-INF/views/news_list.jsp" %>
 		
+		<c:if test="${not empty MY_BOOKS}">
+			<%@ include file="/WEB-INF/views/book/list_view.jsp" %>
+		</c:if>
 	</section>	
 </body>
 <script>

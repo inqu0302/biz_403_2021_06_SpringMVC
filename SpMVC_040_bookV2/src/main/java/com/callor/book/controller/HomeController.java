@@ -57,22 +57,22 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping(value = "/book", method = RequestMethod.GET)
-	public String home1(
-			@RequestParam(name = "search",
-					required = false,
-					defaultValue = "") String search, Model model) throws MalformedURLException, IOException, ParseException {
+//	@RequestMapping(value = "/book", method = RequestMethod.GET)
+//	public String home1(
+//			@RequestParam(name = "search",
+//					required = false,
+//					defaultValue = "") String search, Model model) throws MalformedURLException, IOException, ParseException {
+//		
+//		if(search != null && !search.equals("")) {
+//			
+//			String queryURL = nBookService.queryURL(search.trim());
+//			String jsonString = nBookService.getJsonString(queryURL);
+//			List<BookDTO> bookList = nBookService.getNaverList(jsonString);
+//			model.addAttribute("BOOKS",bookList);
+//		}
 		
-		if(search != null && !search.equals("")) {
-			
-			String queryURL = nBookService.queryURL(search.trim());
-			String jsonString = nBookService.getJsonString(queryURL);
-			List<BookDTO> bookList = nBookService.getNaverList(jsonString);
-			model.addAttribute("BOOKS",bookList);
-		}
-		
-		return "home";
-	}
+//		return "home";
+//	}
 	
 //	@RequestMapping(value = "/movie", method = RequestMethod.GET)
 //	public String movie(

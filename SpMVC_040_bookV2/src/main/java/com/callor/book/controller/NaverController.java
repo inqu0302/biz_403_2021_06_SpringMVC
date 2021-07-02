@@ -26,6 +26,7 @@ public class NaverController {
 
 	@Qualifier(NaverQualifier.NAVER_MAIN_SERVICE_V1)
 	protected final NaverMainService nService;
+	
 
 	@RequestMapping(value="/{CAT}", method=RequestMethod.GET)
 	public String home(@PathVariable(name = "CAT")String cat, 
