@@ -8,17 +8,7 @@
 <c:set
 	var="rootPath"
 	value="${pageContext.request.contextPath}" />
-<style>
-	div.ga_box {
-		display: flex;
-	}
-	div.ga_box div:first-of-type {
-		flex:1;
-	}
-	div.ga_box div:last-of-type {
-		flex:3;
-	}
-</style>
+
 
 <c:forEach
 	items="${GALLERYS}"
@@ -29,7 +19,11 @@
 			<img src="${rootPath}/files/${GALLERY.g_image}" width="100px">
 		</div>
 		<div>
-			<h3>${GALLERY.g_subject}</h3>
+			<h3>
+				<a href="${rootPath}/gallery/detail/${GALLERY.g_seq}">
+					${GALLERY.g_subject}
+				</a>
+				${GALLERY.g_subject}</h3>
 			<p>${GALLERY.g_content}</p>
 		</div>
 	</div>

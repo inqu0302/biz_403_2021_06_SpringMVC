@@ -2,7 +2,26 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="rootPath" value="${pageContext.request.contextPath}" />    
-    
+ 
+<style>
+	label {
+		display: inline-block;
+		width: 30%;
+		text-align: right;
+	
+	}
+	
+	input,textarea {
+		display:inline-block;
+		width: 60%;
+	
+	}
+	
+	textarea {
+	resize: none;
+}
+
+</style>    
 <form method="POST" enctype="multipart/form-data">
 
 	<div>
