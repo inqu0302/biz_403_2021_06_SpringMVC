@@ -30,6 +30,29 @@ public class GalleryController {
 	@Qualifier("galleryServiceV1")
 	protected final GalleryService gaService;
 	
+	/*
+	 * localhost:8080/rootPath/gallery/dumy 로 요청을 했을때 Request 처리
+	 * 
+	 * <a href="${rootPath}/gallery/dumy>열기</a> a tag를 클릭시 
+	 * 
+	 * location.href="${rootPath}/gallery/dumy" JS 에서
+	 */
+	@RequestMapping(value = "/dumy", method=RequestMethod.GET)
+	public String dumy() {
+		return "home";
+	}
+	
+	/*
+	 * <form action="${rootPath}/dumy" method=POST>
+	 * 		<input name="str">
+	 * 		<button type="submit">전송</button>
+	 * </form>
+	 */
+	@RequestMapping(value = "/dumy", method=RequestMethod.POST)
+	public String dumy(String str) {
+		return "home";
+	}
+	
 	@RequestMapping(value={"/", ""},method=RequestMethod.GET)
 	public String list(Model model) throws Exception {
 		

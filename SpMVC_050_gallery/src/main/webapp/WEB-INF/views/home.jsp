@@ -111,7 +111,7 @@ div#gallery_info{
 </head>
 <body>
 <h1>내 갤러리</h1>
-
+<%@ include file="/WEB-INF/views/include/include_nav.jspf" %>
 <c:choose>
 	<c:when test="${BODY eq 'GA-INPUT'}">
 		<%@ include file="/WEB-INF/views/gallery/input.jsp" %>
@@ -123,6 +123,12 @@ div#gallery_info{
 	<c:when test="${BODY eq 'GA-DETAIL'}">
 		<%@ include file="/WEB-INF/views/gallery/detail.jsp" %>
 		<a id=button href="${rootPath}/gallery">리스트로</a>
+	</c:when>
+	<c:when test="${BODY eq 'JOIN'}">
+		<%@ include file="/WEB-INF/views/member/join.jsp" %>
+	</c:when>
+	<c:when test="${BODY eq 'LOGIN'}">
+		<%@ include file="/WEB-INF/views/member/login.jsp" %>
 	</c:when>
 	<c:otherwise>
 		<a href="${rootPath}/gallery/input">이미지 등록</a>
@@ -137,8 +143,31 @@ div#gallery_info{
 	</a>
 </c:forEach>
 
-<img src="${rootPath}/files/title.jpg" width="200px" />
-
-
 </body>
+<script>
+let main_nav = document.querySelector("nav#main_nav")
+
+if(main_nav){
+	
+	main_nav.addEventListener("click",(e)=>{
+		let menu = e.target
+		
+		if(menu.tagName === "LI"){
+			if(menu.id === "join"){
+				location.href = "${rootPath}/member/join"
+			} else if(menu.id === "login"){
+				location.href = "${rootPath}/member/login"
+			} else if(menu.id === "logout"){
+				location.href = "${rootPath}/member/logout"
+			} else if(menu.id === "image_create"){
+				location.href = "${rootPath}/gallery/input"
+			} else if(menu.id === "home"){
+				location.href = "${rootPath}/"
+			}
+				
+		}
+	})
+}
+
+</script>
 </html>
