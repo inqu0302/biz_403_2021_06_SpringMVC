@@ -21,7 +21,6 @@ h1{
 	text-align: center;
 	background: #4682B4;
 	padding: 2rem;
-	margin-bottom: 1rem;
 }
 
 a#button{
@@ -107,6 +106,50 @@ div#gallery_info{
 	margin: 10px auto;
 	padding: 3rem;
 }
+
+nav#main_nav{
+	background : #20B2AA;
+}
+
+nav#main_nav ul{
+	display: flex;
+	list-style: none;
+}
+
+nav#main_nav ul li{
+	margin-left: 10px;
+	padding : 1rem;
+	position: relative;
+}
+
+nav#main_nav ul li:nth-child(3) {
+	margin-left: auto;
+}
+
+nav#main_nav ul li:hover{
+	background: #00FFFF;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+nav#main_nav ul li:after{
+	content: "";
+	position: absolute;
+	left:0;
+	bottom: 0;
+	
+	heigth:0;
+	width:0;
+	
+	transition: all 0.7s;
+}
+
+nav#main_nav ul li:hover:after{
+	border-bottom: 5px solid yellow;
+	
+	heigth: 100%;
+	width:100%;
+}
 </style>
 </head>
 <body>
@@ -156,7 +199,7 @@ if(main_nav){
 			if(menu.id === "join"){
 				location.href = "${rootPath}/member/join"
 			} else if(menu.id === "login"){
-				location.href = "${rootPath}/member/login"
+				location.href = "${rootPath}/member/login/nav"
 			} else if(menu.id === "logout"){
 				location.href = "${rootPath}/member/logout"
 			} else if(menu.id === "image_create"){

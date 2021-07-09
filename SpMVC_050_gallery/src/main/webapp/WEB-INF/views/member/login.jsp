@@ -77,5 +77,11 @@ if(login_fail === "NOT_USERID"){
 	msg_error.innerText = "비밀번호가 틀렸습니다."
 	msg_error.classList.add("view")
 	
+} else if(login_fail === "LOGIN_REQ"){
+	
+	msg_error.innerHTML = "로그인이 필요한 서비스 입니다.<br/>";
+	msg_error.innerHTML = "로그인을 해 주세요.";
+	
+	msg_error.classList.add("view")
 }
 </script>

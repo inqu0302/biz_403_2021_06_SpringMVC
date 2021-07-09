@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,7 +20,6 @@ import com.callor.gallery.service.GalleryService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 
 @RequiredArgsConstructor
 @Slf4j
@@ -39,9 +37,8 @@ public class GalleryServiceImplV1 implements GalleryService {
 	 * Spring framework는 변수를 초기화, 
 	 * 		method를 실행하여 또 변수 초기화
 	 * 		이미 생성되어 준비된 객체에 주입등을 수행한다
-	 * 
 	 */
-	@Autowired
+//	@Autowired
 	public void create_table(GalleryDao gDao) {
 		Map<String,String> maps = new HashMap<String,String>();
 		gaDao.create_table(maps);
@@ -55,7 +52,9 @@ public class GalleryServiceImplV1 implements GalleryService {
 	}
 
 	@Override
-	public void input(GalleryDTO gaDTO, MultipartFile one_file, MultipartHttpServletRequest m_file) throws Exception {
+	public void input(GalleryDTO gaDTO, 
+				MultipartFile one_file, 
+				MultipartHttpServletRequest m_file) throws Exception {
 		// TODO Auto-generated method stub
 		
 		// 대표이미지가 업로드 되면...
@@ -93,7 +92,7 @@ public class GalleryServiceImplV1 implements GalleryService {
 			String fileUUName = fService.fileUp(file);
 			
 			FileDTO fDto = FileDTO.builder()
-							.file_gseq(g_seq)
+							.file_gseq(g_seq) // 갤러리 데이터의 PK값
 							.file_original(fileOriginName)
 							.file_upname(fileUUName)
 							.build();
@@ -117,8 +116,32 @@ public class GalleryServiceImplV1 implements GalleryService {
 
 	@Override
 	public List<GalleryFilesDTO> findByIdGalleryFiles(Long g_seq) {
-		// TODO Auto-generated method stub
 		
-		return gaDao.findByIdGalleryFiles(g_seq);
+		List<GalleryFilesDTO> gfList = gaDao.findByIdGalleryFiles(g_seq);
+		
+		/*
+		 * dao로 부터 select를 한 후 데이터 검증 하기 위해 사용하는 코드
+		 * gfList가 데이터가 조회되지 않아 null이 발생할수 있다
+		 */
+		if(gfList != null && gfList.size() > 0) {
+			log.debug(gfList.toString());	
+		} else {
+			log.debug("조회된 데이터가 없음");
+		}
+		
+		return gfList;
 	}
+
+	@Override
+	public GalleryDTO findByIdGellery(Long g_seq) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int delete(Long g_seq) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 }
