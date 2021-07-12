@@ -33,7 +33,7 @@
 		<property name="maxUploadSize" value="35000000"/>
 	</bean>	
 
-	
+
 * maxUploadPerFile : 파일 1개의 용량 제한
 * maxUploadFile : 전체 파일 용량 제한, 다수의 파일을 올릴때	
 
