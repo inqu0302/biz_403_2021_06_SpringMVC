@@ -57,7 +57,8 @@ public class GalleryServiceImplV2 extends GalleryServiceImplV1{
 	@Override
 	public int delete(Long g_seq) {
 		
-		// Gallery 데이터와 fileList 데이터가 같이 포함된 데이터다
+		
+		// Gallery 데이터와 fileList 데이터가 같이 포함된 데이터
 		GalleryDTO gaDTO = gaDao.findByIdGalleryFilesResultMap(g_seq);
 		if(gaDTO == null) {
 			return 0;
@@ -67,16 +68,28 @@ public class GalleryServiceImplV2 extends GalleryServiceImplV1{
 		for(FileDTO file : fileList) {
 			
 			// 첨부파일 삭제
+			
+			String attFileName = file.getFile_upname();
+			int ret = fService.delete(attFileName);
+			
 			// 데이터 한개씩 삭제
+			if(ret > 0) {
+				fDao.delete(file.getFile_seq());
+			}
 			
 		}
 		
 		// 본문 첨부파일 삭제
+		String imgFileName = gaDTO.getG_image();
+		int ret = fService.delete(imgFileName);
 		
-		// 본문 데이터 삭제
-		// gaDao.delete(g_seq);
-
+		if(ret > 0) {
+			// 본문 데이터 삭제
+			gaDao.delete(g_seq);
+		} else {
+			log.debug("파일 삭제 실패로 데이터 삭제 하지 않음");
+		}
 		return 0;
 	}
-	
 }
+	

@@ -25,13 +25,12 @@
 		</div>
 		<div>
 			<h3>
-				<a href="${rootPath}/gallery/detail/${GALLERY.g_seq}">
+				<a href="${rootPath}/gallery/detail2/${GALLERY.g_seq}">
 					${GALLERY.g_subject}
 				</a>
-				${GALLERY.g_subject}</h3>
+			</h3>
 			<p>${GALLERY.g_content}</p>
 		</div>
 	</div>
 
 </c:forEach>
-

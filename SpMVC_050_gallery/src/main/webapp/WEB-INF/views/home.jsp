@@ -161,18 +161,25 @@ nav#main_nav ul li:hover:after{
 	</c:when>
 	<c:when test="${BODY eq 'GA-LIST'}">
 		<%@ include file="/WEB-INF/views/gallery/list.jsp" %>
-		<a id=button href="${rootPath}/gallery/input">이미지 등록</a>
+		<a href="${rootPath}/gallery/input">이미지 등록</a>
 	</c:when>
 	<c:when test="${BODY eq 'GA-DETAIL'}">
 		<%@ include file="/WEB-INF/views/gallery/detail.jsp" %>
-		<a id=button href="${rootPath}/gallery">리스트로</a>
 	</c:when>
+	
+	<c:when test="${BODY eq 'GA-DETAIL-V2'}">
+		<%@ include file="/WEB-INF/views/gallery/detail2.jsp" %>
+	</c:when>
+
 	<c:when test="${BODY eq 'JOIN'}">
 		<%@ include file="/WEB-INF/views/member/join.jsp" %>
 	</c:when>
+
 	<c:when test="${BODY eq 'LOGIN'}">
 		<%@ include file="/WEB-INF/views/member/login.jsp" %>
 	</c:when>
+
+
 	<c:otherwise>
 		<a href="${rootPath}/gallery/input">이미지 등록</a>
 	</c:otherwise>

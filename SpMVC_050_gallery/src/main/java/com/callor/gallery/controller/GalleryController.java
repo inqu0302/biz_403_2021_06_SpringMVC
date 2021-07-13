@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -170,11 +171,19 @@ public class GalleryController {
 			// TODO: handle exception
 			log.debug("갤러리 seq 오류");
 			return "redirect:/gallery";
-		}
+		} 
 		
 		int ret = gaService.delete(g_seq); 
 		
 		return "redirect:/gallery";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/file/delete/{seq}", method=RequestMethod.GET)
+	public String file_delete(@PathVariable("seq")String seq) {
+		
+		return "OK";
+		
 	}
 	
 }
