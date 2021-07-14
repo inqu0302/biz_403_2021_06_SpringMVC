@@ -59,10 +59,20 @@ public class GalleryController {
 	}
 	
 	@RequestMapping(value={"/", ""},method=RequestMethod.GET)
-	public String list(Model model) throws Exception {
+	public String list(@RequestParam(value="pageNum", required = false, defaultValue = "1")String pageNum, Model model) throws Exception {
 		
-		List<GalleryDTO> gaList = gaService.selectAll();
+		int intPageNum = Integer.valueOf(pageNum);
+		List<GalleryDTO> gaList = gaService.selectAllPage(intPageNum);
+
+		// List<GalleryDTO> gaList = gaService.selectAll();
 		model.addAttribute("GALLERYS",gaList);
+		if(intPageNum > 0) {
+			model.addAttribute("PAGE_NUM",intPageNum);
+		}
+
+		List<GalleryDTO> gallerPageList = gaService.selectAllPage(intPageNum);
+		model.addAttribute("GALLERYS",gallerPageList);
+
 		model.addAttribute("BODY","GA-LIST");
 		return "home";
 		
@@ -182,7 +192,18 @@ public class GalleryController {
 	@RequestMapping(value="/file/delete/{seq}", method=RequestMethod.GET)
 	public String file_delete(@PathVariable("seq")String seq) {
 		
-		return "OK";
+		Long g_seq = 0l;
+		try {
+			g_seq = Long.valueOf(seq);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "FAIL_SEQ";
+		}
+		
+		int ret = gaService.file_delete(g_seq);
+		
+		if(ret>0) return "OK";
+		else return "FAIL";
 		
 	}
 	

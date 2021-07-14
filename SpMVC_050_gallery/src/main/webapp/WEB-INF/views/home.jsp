@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>나의 홈페이지</title>
+<script src="https://kit.fontawesome.com/702bdebe0d.js" crossorigin="anonymous"></script>
 <style>
 *{
 	margin : 0;
