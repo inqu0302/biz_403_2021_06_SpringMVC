@@ -8,7 +8,7 @@
 <c:set
 	var="rootPath"
 	value="${pageContext.request.contextPath}" />
-
+<%@ include file="/WEB-INF/views/include/include_gallery_search.jspf" %>
 <section id="image_list_section">
 	<c:forEach
 		items="${GALLERYS}"
